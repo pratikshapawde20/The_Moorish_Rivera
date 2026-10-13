@@ -1,0 +1,560 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Contact The Moorish Rivera for restaurant enquiries, dining information, directions and reservations.">
+
+    <meta name="theme-color" content="#ffffff">
+
+    <title>Contact Us | The Moorish Rivera</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- CONTACT CSS -->
+    <link rel="stylesheet" href="css/contact.css" type="text/css">
+
+    <!-- CONTACT JAVASCRIPT -->
+    <script src="css/js/contact.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ANNOUNCEMENT BAR -->
+    <div class="announcement">
+
+        <span class="announcement-symbol">✦</span>
+
+        <p>A wonderful dining experience awaits you.</p>
+
+        <span class="announcement-symbol">✦</span>
+
+    </div>
+
+
+    <!-- HEADER -->
+    <header class="site-header" id="siteHeader">
+
+        <!-- RESTAURANT BRAND -->
+        <a href="index.html"
+           class="brand"
+           aria-label="The Moorish Rivera home">
+
+            <!-- Replace this MR monogram with your actual logo if needed. -->
+            <span class="brand-mark">MR</span>
+
+            <span class="brand-copy">
+                <strong>THE MOORISH</strong>
+                <small>R I V E R A</small>
+            </span>
+
+        </a>
+
+
+        <!-- MOBILE NAVIGATION BUTTON -->
+        <button class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open navigation"
+                aria-expanded="false"
+                aria-controls="mainNav">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <!-- NAVIGATION -->
+        <nav class="main-nav" id="mainNav">
+
+            <a href="index.html">Home</a>
+
+            <a href="menu.html">Menu</a>
+
+            <a href="about.html">About Us</a>
+
+            <a href="contact.html"
+               class="active"
+               aria-current="page">
+                Contact
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- CONTACT HERO -->
+        <section class="contact-hero">
+
+            <div class="hero-decoration" aria-hidden="true">MR</div>
+
+            <div class="hero-content reveal">
+
+                <span class="eyebrow">WE WOULD LOVE TO HEAR FROM YOU</span>
+
+                <h1>
+                    Let's Start<br>
+                    <span>A Conversation.</span>
+                </h1>
+
+                <p>
+                    Have a question, planning a visit or looking for
+                    more information? Get in touch with The Moorish Rivera.
+                    We look forward to hearing from you.
+                </p>
+
+                <a href="#contact-details" class="primary-button">
+                    Contact Our Team
+                    <span aria-hidden="true">↗</span>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT INTRODUCTION -->
+        <section class="contact-intro section-container reveal">
+
+            <span class="eyebrow">GET IN TOUCH</span>
+
+            <h2>
+                Every Great Experience<br>
+                <span>Begins With a Hello.</span>
+            </h2>
+
+            <p>
+                Whether you have a question about our menu, want to plan
+                a special occasion or simply need directions, we are here
+                to help.
+            </p>
+
+        </section>
+
+
+        <!-- CONTACT INFORMATION -->
+        <section class="contact-details section-container"
+                 id="contact-details">
+
+            <div class="contact-card reveal">
+
+                <div class="contact-icon" aria-hidden="true">
+                    <span>☎</span>
+                </div>
+
+                <h3>Call Us</h3>
+
+                <p>
+                    Have a question? Speak to our team.
+                </p>
+
+                <!-- ADD YOUR RESTAURANT PHONE NUMBER -->
+                <a href="tel:+910000000000"
+                   class="contact-link">
+                    09970475757
+                </a>
+
+            </div>
+
+
+            <div class="contact-card reveal">
+
+                <div class="contact-icon" aria-hidden="true">
+                    <span>✉</span>
+                </div>
+
+                <h3>Email Us</h3>
+
+                <p>
+                    Send us your questions or enquiries.
+                </p>
+
+                <!-- REPLACE WITH YOUR ACTUAL EMAIL ADDRESS -->
+                <a href="mailto:your-email@example.com"
+                   class="contact-link">
+                    Add Your Email Address
+                </a>
+
+            </div>
+
+
+            <div class="contact-card reveal">
+
+                <div class="contact-icon" aria-hidden="true">
+                    <span>⌖</span>
+                </div>
+
+                <h3>Visit Us</h3>
+
+                <p>
+                    Planning to visit? Find our restaurant location.
+                </p>
+
+                <!-- ADD YOUR RESTAURANT ADDRESS -->
+                <a href="#restaurant-location"
+                   class="contact-link">
+                    Add Your Restaurant Address
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT FORM AND LOCATION -->
+        <section class="contact-main section-container">
+
+            <!-- CONTACT FORM -->
+            <div class="contact-form-wrapper reveal">
+
+                <span class="eyebrow">SEND US A MESSAGE</span>
+
+                <h2>
+                    How Can We<br>
+                    <span>Help You?</span>
+                </h2>
+
+                <p class="form-intro">
+                    Complete the form below and let us know how we can help.
+                </p>
+
+
+                <form id="contactForm">
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="fullName">Full Name *</label>
+
+                            <input type="text"
+                                   id="fullName"
+                                   name="fullName"
+                                   placeholder="Enter your full name"
+                                   autocomplete="name"
+                                   required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="email">Email Address *</label>
+
+                            <input type="email"
+                                   id="email"
+                                   name="email"
+                                   placeholder="Enter your email"
+                                   autocomplete="email"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="phone">Phone Number</label>
+
+                            <input type="tel"
+                                   id="phone"
+                                   name="phone"
+                                   placeholder="Enter your phone number"
+                                   autocomplete="tel">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="subject">Enquiry Type *</label>
+
+                            <select id="subject"
+                                    name="subject"
+                                    required>
+
+                                <option value="" disabled selected>
+                                    Select an enquiry
+                                </option>
+
+                                <option value="General Enquiry">
+                                    General Enquiry
+                                </option>
+
+                                <option value="Menu Enquiry">
+                                    Menu Enquiry
+                                </option>
+
+                                <option value="Dining Enquiry">
+                                    Dining Enquiry
+                                </option>
+
+                                <option value="Special Occasion">
+                                    Special Occasion
+                                </option>
+
+                                <option value="Feedback">
+                                    Feedback
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="message">Your Message *</label>
+
+                        <textarea id="message"
+                                  name="message"
+                                  rows="5"
+                                  placeholder="Tell us how we can help..."
+                                  required></textarea>
+
+                    </div>
+
+
+                    <button type="submit"
+                            class="primary-button submit-button">
+
+                        Send Message
+
+                        <span aria-hidden="true">↗</span>
+
+                    </button>
+
+
+                    <p class="form-notice" id="formNotice" role="status"
+                       aria-live="polite"></p>
+
+                    <p class="form-disclaimer">
+                        Please note: the contact form requires an email
+                        service or backend to deliver messages to the restaurant.
+                    </p>
+
+                </form>
+
+            </div>
+
+
+            <!-- LOCATION PLACEHOLDER -->
+            <div class="location-wrapper reveal"
+                 id="restaurant-location">
+
+                <div class="location-heading">
+
+                    <span class="eyebrow">FIND OUR RESTAURANT</span>
+
+                    <h2>
+                        Come and<br>
+                        <span>Visit Us.</span>
+                    </h2>
+
+                    <p>
+                        We look forward to welcoming you to
+                        The Moorish Rivera.
+                    </p>
+
+                </div>
+
+
+                <!-- MAP PLACEHOLDER: ADD YOUR LOCATION LATER -->
+                <div class="map-placeholder">
+
+                    <div class="map-pattern" aria-hidden="true"></div>
+
+                    <div class="map-content">
+
+                        <div class="map-pin" aria-hidden="true">
+                            ⌖
+                        </div>
+
+                        <h3>Your Restaurant Location</h3>
+
+                        <p>
+                            Add your restaurant address or Google Maps
+                            embed here when it is ready.
+                        </p>
+
+                        <span class="location-badge">
+                            LOCATION TO BE ADDED
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="location-note">
+
+                    <span class="location-note-icon">✦</span>
+
+                    <p>
+                        Update this section with your exact address,
+                        opening hours and Google Maps location.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CLOSING SECTION -->
+        <section class="contact-cta">
+
+            <div class="cta-decoration" aria-hidden="true">✦</div>
+
+            <div class="cta-content reveal">
+
+                <span class="eyebrow">A TABLE FULL OF POSSIBILITIES</span>
+
+                <h2>
+                    Great Food.<br>
+                    <span>Wonderful Company.</span>
+                </h2>
+
+                <p>
+                    Discover the flavours and dining experience
+                    waiting for you at The Moorish Rivera.
+                </p>
+
+                <a href="menu.html" class="light-button">
+                    Explore Our Menu
+                    <span aria-hidden="true">↗</span>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="footer-main">
+
+            <!-- BRAND -->
+            <div class="footer-brand">
+
+                <a href="index.html"
+                   class="brand footer-logo"
+                   aria-label="The Moorish Rivera home">
+
+                    <span class="brand-mark">MR</span>
+
+                    <span class="brand-copy">
+                        <strong>THE MOORISH</strong>
+                        <small>R I V E R A</small>
+                    </span>
+
+                </a>
+
+                <p>
+                    Celebrating delicious flavours, warm hospitality
+                    and memorable dining experiences.
+                </p>
+
+            </div>
+
+
+            <!-- EXPLORE -->
+            <div class="footer-column">
+
+                <h3>Explore</h3>
+
+                <a href="index.html">Home</a>
+                <a href="menu.html">Our Menu</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+
+            </div>
+
+
+            <!-- OUR MENU -->
+            <div class="footer-column">
+
+                <h3>Discover</h3>
+
+                <a href="menu.html">Indian Specialities</a>
+                <a href="menu.html">Vegetarian Dishes</a>
+                <a href="menu.html">Kebabs & Grills</a>
+                <a href="menu.html">Seafood</a>
+
+            </div>
+
+
+            <!-- CONTACT -->
+            <div class="footer-column footer-contact">
+
+                <h3>Contact</h3>
+
+                <p>
+                    Questions, feedback or planning a visit?
+                    We would love to hear from you.
+                </p>
+
+                <a href="#contact-details"
+                   class="footer-contact-link">
+                    Get in Touch →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; <span id="currentYear"></span>
+                The Moorish Rivera. All rights reserved.
+            </p>
+
+            <p class="footer-tagline">
+                GOOD FOOD. GREAT COMPANY. TIMELESS MEMORIES.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- BACK TO TOP -->
+    <button class="back-to-top"
+            id="backToTop"
+            aria-label="Back to top">
+
+        ↑
+
+    </button>
+
+</body>
+</html>
+
