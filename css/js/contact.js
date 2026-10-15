@@ -1,325 +1,180 @@
 
-/* =====================================================
-   THE MOORISH RIVERA
-   CONTACT PAGE JAVASCRIPT
-===================================================== */
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const siteHeader = document.getElementById("siteHeader");
+document.addEventListener("DOMContentLoaded", () => {
+    const header = document.getElementById("siteHeader");
     const menuToggle = document.getElementById("menuToggle");
     const mainNav = document.getElementById("mainNav");
-
     const backToTop = document.getElementById("backToTop");
-    const currentYear = document.getElementById("currentYear");
-
+    const year = document.getElementById("currentYear");
     const contactForm = document.getElementById("contactForm");
-    const formNotice = document.getElementById("formNotice");
+    const formStatus = document.getElementById("formStatus");
 
-
-    /* COPYRIGHT YEAR */
-
-    if (currentYear) {
-        currentYear.textContent = new Date().getFullYear();
+    // Automatically update the footer year.
+    if (year) {
+        year.textContent = new Date().getFullYear();
     }
 
-
-    /* MOBILE NAVIGATION */
-
+    // Responsive mobile navigation.
     function closeMenu() {
-
         if (!menuToggle || !mainNav) return;
 
-        menuToggle.classList.remove("active");
         mainNav.classList.remove("open");
-
         menuToggle.setAttribute("aria-expanded", "false");
         menuToggle.setAttribute("aria-label", "Open navigation");
-
-        document.body.classList.remove("menu-open");
-
     }
-
 
     if (menuToggle && mainNav) {
+        menuToggle.addEventListener("click", () => {
+            const isOpen =
+                menuToggle.getAttribute("aria-expanded") === "true";
 
-        menuToggle.addEventListener("click", function () {
-
-            const isOpen = mainNav.classList.toggle("open");
-
-            menuToggle.classList.toggle("active", isOpen);
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
-
+            menuToggle.setAttribute("aria-expanded", String(!isOpen));
             menuToggle.setAttribute(
                 "aria-label",
-                isOpen ? "Close navigation" : "Open navigation"
+                isOpen ? "Open navigation" : "Close navigation"
             );
 
-            document.body.classList.toggle("menu-open", isOpen);
-
+            mainNav.classList.toggle("open", !isOpen);
         });
 
-
-        // Close the menu after a navigation link is clicked.
-
-        mainNav.querySelectorAll("a").forEach(function (link) {
-
+        mainNav.querySelectorAll("a").forEach(link => {
             link.addEventListener("click", closeMenu);
-
         });
 
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape") closeMenu();
+        });
 
-        // Close the menu when clicking outside it.
-
-        document.addEventListener("click", function (event) {
-
-            const clickedToggle = menuToggle.contains(event.target);
-            const clickedNav = mainNav.contains(event.target);
-
+        document.addEventListener("click", event => {
             if (
-                mainNav.classList.contains("open") &&
-                !clickedToggle &&
-                !clickedNav
+                !mainNav.contains(event.target) &&
+                !menuToggle.contains(event.target)
             ) {
                 closeMenu();
             }
-
         });
-
-
-        // Close the menu with the Escape key.
-
-        document.addEventListener("keydown", function (event) {
-
-            if (
-                event.key === "Escape" &&
-                mainNav.classList.contains("open")
-            ) {
-                closeMenu();
-                menuToggle.focus();
-            }
-
-        });
-
-
-        // Reset the menu when returning to desktop width.
-
-        window.addEventListener("resize", function () {
-
-            if (window.innerWidth > 760) {
-                closeMenu();
-            }
-
-        });
-
     }
 
+    // Header shadow and back-to-top button.
+    function updateScrollUI() {
+        if (header) {
+            header.classList.toggle("scrolled", window.scrollY > 25);
+        }
 
-    /* STICKY HEADER */
-
-    function updateHeader() {
-
-        if (!siteHeader) return;
-
-        siteHeader.classList.toggle(
-            "scrolled",
-            window.scrollY > 30
-        );
-
+        if (backToTop) {
+            backToTop.classList.toggle(
+                "visible",
+                window.scrollY > 400
+            );
+        }
     }
 
+    updateScrollUI();
 
-    /* BACK TO TOP */
-
-    function updateBackToTop() {
-
-        if (!backToTop) return;
-
-        backToTop.classList.toggle(
-            "visible",
-            window.scrollY > 400
-        );
-
-    }
-
-
-    if (backToTop) {
-
-        backToTop.addEventListener("click", function () {
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-        });
-
-    }
-
-
-    /* OPTIMIZED SCROLL EVENTS */
-
-    let ticking = false;
-
-    function handleScroll() {
-
-        if (ticking) return;
-
-        ticking = true;
-
-        window.requestAnimationFrame(function () {
-
-            updateHeader();
-            updateBackToTop();
-
-            ticking = false;
-
-        });
-
-    }
-
-    window.addEventListener("scroll", handleScroll, {
+    window.addEventListener("scroll", updateScrollUI, {
         passive: true
     });
 
-    updateHeader();
-    updateBackToTop();
+    if (backToTop) {
+        backToTop.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: window.matchMedia(
+                    "(prefers-reduced-motion: reduce)"
+                ).matches ? "auto" : "smooth"
+            });
+        });
+    }
 
-
-    /* SCROLL REVEAL ANIMATIONS */
-
-    const revealElements = document.querySelectorAll(".reveal");
-
-    const reducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
-
+    // Reveal cards and sections as the visitor scrolls.
+    const revealItems = document.querySelectorAll(".reveal");
 
     if (
-        reducedMotion ||
-        !("IntersectionObserver" in window)
+        "IntersectionObserver" in window &&
+        !window.matchMedia("(prefers-reduced-motion: reduce)").matches
     ) {
-
-        revealElements.forEach(function (element) {
-
-            element.classList.add("visible");
-
-        });
-
-    } else {
-
         const observer = new IntersectionObserver(
-
-            function (entries, currentObserver) {
-
-                entries.forEach(function (entry) {
-
+            (entries, currentObserver) => {
+                entries.forEach(entry => {
                     if (entry.isIntersecting) {
-
-                        entry.target.classList.add("visible");
-
+                        entry.target.classList.add("is-visible");
                         currentObserver.unobserve(entry.target);
-
                     }
-
                 });
-
             },
-
             {
                 threshold: 0.12,
-                rootMargin: "0px 0px -25px 0px"
+                rootMargin: "0px 0px -20px 0px"
             }
-
         );
 
-
-        revealElements.forEach(function (element) {
-
-            observer.observe(element);
-
+        revealItems.forEach((item, index) => {
+            item.style.transitionDelay = `${(index % 3) * 80}ms`;
+            observer.observe(item);
         });
-
+    } else {
+        revealItems.forEach(item => {
+            item.classList.add("is-visible");
+        });
     }
 
-
-    /* CONTACT FORM VALIDATION */
-
-    if (contactForm && formNotice) {
-
-        contactForm.addEventListener("submit", function (event) {
-
+    // Contact form: prepares an email in the visitor's email app.
+    if (contactForm && formStatus) {
+        contactForm.addEventListener("submit", event => {
             event.preventDefault();
 
-            formNotice.className = "form-notice";
-            formNotice.textContent = "";
+            // IMPORTANT: replace this with the restaurant's real email.
+            const restaurantEmail = "ADD_RESTAURANT_EMAIL_HERE";
 
-
-            if (!contactForm.checkValidity()) {
-
-                contactForm.reportValidity();
-
-                formNotice.textContent =
-                    "Please complete all required fields correctly.";
-
-                formNotice.classList.add("error");
+            if (
+                restaurantEmail === "ADD_RESTAURANT_EMAIL_HERE" ||
+                !restaurantEmail.includes("@")
+            ) {
+                formStatus.textContent =
+                    "The restaurant email has not been configured yet. " +
+                    "Please call 09970475757 for enquiries.";
 
                 return;
-
             }
 
+            const formData = new FormData(contactForm);
 
-            /*
-              FRONT-END DEMO ONLY
+            const name = String(
+                formData.get("fullName") || ""
+            ).trim();
 
-              This form currently validates the input but does not
-              send an email or store a message.
+            const email = String(
+                formData.get("email") || ""
+            ).trim();
 
-              Connect it to a backend or email service to receive
-              actual customer enquiries.
-            */
+            const phone = String(
+                formData.get("phone") || ""
+            ).trim();
 
+            const enquiryType = String(
+                formData.get("enquiryType") || "General Enquiry"
+            );
 
-            formNotice.textContent =
-                "Your form is valid, but message delivery is not configured yet. Please contact the restaurant directly.";
+            const message = String(
+                formData.get("message") || ""
+            ).trim();
 
-            formNotice.classList.add("success");
+            const subject = encodeURIComponent(
+                `Website enquiry: ${enquiryType}`
+            );
 
+            const body = encodeURIComponent(
+                `Name: ${name}\n` +
+                `Email: ${email}\n` +
+                `Phone: ${phone || "Not provided"}\n` +
+                `Enquiry: ${enquiryType}\n\n` +
+                `Message:\n${message}`
+            );
+
+            formStatus.textContent =
+                "Opening your email application...";
+
+            window.location.href =
+                `mailto:${restaurantEmail}?subject=${subject}&body=${body}`;
         });
-
     }
-
-
-    /* SMOOTH INTERNAL LINKS */
-
-    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-
-        link.addEventListener("click", function (event) {
-
-            const targetId = link.getAttribute("href");
-
-            if (!targetId || targetId === "#") return;
-
-            const target = document.querySelector(targetId);
-
-            if (target) {
-
-                event.preventDefault();
-
-                target.scrollIntoView({
-                    behavior: reducedMotion ? "auto" : "smooth",
-                    block: "start"
-                });
-
-            }
-
-        });
-
-    });
-
 });
-
